@@ -1,14 +1,11 @@
 import express from 'express'; 
-import "./database";
+import './database';
+import { routes } from './routes';
 
 const app = express();
 
-app.get("/", (req, res) => {
-    return res.json({ message: "Hello World"});
-});
+app.use(express.json()); // Definir uso do JSON antes das rotas
 
-app.post("/users", (req, res) => {
-    return res.json({ message: "User saved!"});
-});
+app.use(routes);
 
-app.listen(3333, () => console.log("Server running on port 3333"));
+app.listen(3333, () => console.log('Server running on port 3333'));
