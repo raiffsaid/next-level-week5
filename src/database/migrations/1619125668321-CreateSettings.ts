@@ -32,7 +32,8 @@ export class CreateSettings1619125668321 implements MigrationInterface {
                         default: "now()"
                     }
                 ]
-        }))
+            })
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
