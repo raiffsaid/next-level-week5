@@ -40,6 +40,8 @@ class ConnectionsService {
             where: { admin_id: null },
             relations: ["user"]
         });
+
+        return connections;
     }
 
     async findBySocketID(socket_id: string) {

@@ -87,4 +87,6 @@ document.querySelector("#send_message_button")
         });
 
         document.getElementById("messages").innerHTML += rendered;
+
+        text.value = "";
 });

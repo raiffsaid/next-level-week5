@@ -1,5 +1,6 @@
 const socket = io();
 let connectionsUsers = [];
+let connectionInSupport = []; //Cria uma variavel para armazenar os atendimentos
 
 socket.on("admin_list_all_users", (connections) => {
     connectionsUsers = connections;
@@ -22,6 +23,9 @@ function call(id) {
     const connection = connectionsUsers.find(
         (connection) => connection.socket_id === id
     );
+
+    // Quando encontrar a conexao, coloca dentro do array de atendimentos
+    connectionInSupport.push(connection); 
 
     const template = document.getElementById("admin_template").innerHTML;
 
@@ -97,7 +101,7 @@ function sendMessage(id) {
 
 // Recebimento da mensagem do cliente
 socket.on("admin_receive_message", (data) => {
-    const connection = connectionsUsers.find(
+    const connection = connectionInSupport.find(
         (connection) => (connection.socket_id = data.socket_id)
     );
 
